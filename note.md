@@ -16,7 +16,12 @@
 ## 排序
 ### 洗牌
 #### Fisher-Yates-Shuffle算法
-随机抽取数组中的一个数并将其放到开头/末尾
+随机抽取数组中的一个数并将其放置到新数组中
+C语言代码演示：
+~~~
+~~~
+#### Knuth-Durstenfeld-Shuffle算法
+随机抽取一个数字并将其放置到原数组的末尾，并在剩余的数字中继续抽取放置
 C语言代码演示：
 ~~~
 #include <stdio.h>
@@ -31,27 +36,21 @@ int main()
     int arrayLen = sizeof(array) / sizeof(int);
     srand((unsigned)time(NULL));
     shuffle(array, arrayLen);
-    for (int i = 0; i < arrayLen; i++)
-    {
-        printf("%d ", array[i]);
-    }
-
     return 0;
 }
-
 int shuffle(int array[], int arrayLen)
 {
-    for (int i = 0; i < arrayLen; i++)
+    for (int i = 0; i < arrayLen - 1; i++)
     {
-        int k = rand() % arrayLen;
+        int k = i + rand() % (arrayLen - i);
         int tmp = array[i];
         array[i] = array[k];
         array[k] = tmp;
     }
 }
 ~~~
-#### Knuth-Durstenfeld-Shuffle算法
 #### Inside-Out-Algorithm算法
+在前i+1个数中随机抽取一个与i交换，逐渐扩大交换范围
 ## 分治
 
 ### 递归
