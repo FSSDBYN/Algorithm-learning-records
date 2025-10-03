@@ -2,11 +2,11 @@
 
 ## 目录
 
-- 排序
-    - 洗牌
-        - Fisher-Yates-Shuffle
-        - Knuth-Durstenfeld-Shuffle
-        - Inside-Out-Algorithm
+- [排序](#排序)
+    - [洗牌](#洗牌)
+        - [Fisher-Yates-Shuffle](#fisher-yates-shuffle算法)
+        - [Knuth-Durstenfeld-Shuffle](#knuth-durstenfeld-shuffle算法)
+        - [Inside-Out-Algorithm](#inside-out-algorithm算法)
 - 分治
     - 递归
     - 迭代
