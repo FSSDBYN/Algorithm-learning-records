@@ -10,11 +10,48 @@
 - 分治
     - 递归
     - 迭代
-
+- 贪心
+- 二分
+- 位运算
 ## 排序
+### 洗牌
+#### Fisher-Yates-Shuffle算法
+随机抽取数组中的一个数并将其放到开头/末尾
+C语言代码演示：
+~~~
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
+int shuffle(int array[], int arrayLen);
 
+int main()
+{
+    int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int arrayLen = sizeof(array) / sizeof(int);
+    srand((unsigned)time(NULL));
+    shuffle(array, arrayLen);
+    for (int i = 0; i < arrayLen; i++)
+    {
+        printf("%d ", array[i]);
+    }
 
+    return 0;
+}
+
+int shuffle(int array[], int arrayLen)
+{
+    for (int i = 0; i < arrayLen; i++)
+    {
+        int k = rand() % arrayLen;
+        int tmp = array[i];
+        array[i] = array[k];
+        array[k] = tmp;
+    }
+}
+~~~
+#### Knuth-Durstenfeld-Shuffle算法
+#### Inside-Out-Algorithm算法
 ## 分治
 
 ### 递归
