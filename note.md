@@ -24,6 +24,10 @@ C语言代码演示：
 随机抽取一个数字并将其放置到原数组的末尾，并在剩余的数字中继续抽取放置
 C语言代码演示：
 ~~~
+~~~
+#### Inside-Out-Algorithm算法
+在前i+1个数中随机抽取一个与i交换，逐渐扩大交换范围
+~~~
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -40,17 +44,15 @@ int main()
 }
 int shuffle(int array[], int arrayLen)
 {
-    for (int i = 0; i < arrayLen - 1; i++)
+    for (int i = 1; i < arrayLen; i++)
     {
-        int k = i + rand() % (arrayLen - i);
+        int k = rand() % (i+1);
         int tmp = array[i];
         array[i] = array[k];
         array[k] = tmp;
     }
 }
 ~~~
-#### Inside-Out-Algorithm算法
-在前i+1个数中随机抽取一个与i交换，逐渐扩大交换范围
 ## 分治
 
 ### 递归
