@@ -26,7 +26,7 @@ C语言代码演示：
 ~~~
 ~~~
 #### Inside-Out-Algorithm算法
-在前i+1个数中随机抽取一个与i交换，逐渐扩大交换范围
+正序遍历元素，将交换范围从两个元素开始逐步扩大
 ~~~
 #include <stdio.h>
 #include <time.h>
@@ -43,15 +43,15 @@ int main()
     return 0;
 }
 int shuffle(int array[], int arrayLen)
-{
-    for (int i = 1; i < arrayLen; i++)
     {
-        int k = rand() % (i+1);
-        int tmp = array[i];
-        array[i] = array[k];
-        array[k] = tmp;
+        for (int i = 0; i < arrayLen; i++)
+        {
+            int k =rand() % (i+1);
+            int tmp = array[i];
+            array[i] = array[k];
+            array[k] = tmp;
+        }
     }
-}
 ~~~
 ## 分治
 
