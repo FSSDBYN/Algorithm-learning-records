@@ -7,6 +7,10 @@
         - [Fisher-Yates-Shuffle](#fisher-yates-shuffle算法)
         - [Knuth-Durstenfeld-Shuffle](#knuth-durstenfeld-shuffle算法)
         - [Inside-Out-Algorithm](#inside-out-algorithm算法)
+    - [冒泡](#冒泡)
+    - [选择](#选择)
+    - [插入](#插入)
+    - [快速](#快速)
 - 分治
     - 递归
     - 迭代
@@ -17,42 +21,117 @@
 ### 洗牌
 #### Fisher-Yates-Shuffle算法
 随机抽取数组中的一个数并将其放置到新数组中
-C语言代码演示：
+C语言实例：
 ~~~
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+const int ARRAYLEN = 10;
+
+int shuffle(int array[],int targetArray[]){
+    int i,k,t = 0;
+    for(i = ARRAYLEN;i > 0;i--){
+        k = rand() % i;
+        targetArray[t++] = array[k];
+        for(;k < i;k++){
+            array[k] = array[k+1];
+            if(k == i-1){
+                array[k] = -1;
+            }
+        }
+    }
+}
+
+int main(){
+    time_t t;
+    srand((unsigned)time(&t));
+    
+    int array[ARRAYLEN];
+    int targetArray[ARRAYLEN];
+    int i;
+    for(i = 0;i < ARRAYLEN;i++){
+        array[i] = i;
+    }
+    shuffle(array,targetArray);
+    return 0;
+}
 ~~~
 #### Knuth-Durstenfeld-Shuffle算法
 随机抽取一个数字并将其放置到原数组的末尾，并在剩余的数字中继续抽取放置
-C语言代码演示：
-~~~
-~~~
-#### Inside-Out-Algorithm算法
-正序遍历元素，将交换范围从两个元素开始逐步扩大
+C语言实例：
 ~~~
 #include <stdio.h>
-#include <time.h>
 #include <stdlib.h>
+#include <time.h>
 
-int shuffle(int array[], int arrayLen);
+const int ARRAYLEN = 10;
 
-int main()
-{
-    int array[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int arrayLen = sizeof(array) / sizeof(int);
-    srand((unsigned)time(NULL));
-    shuffle(array, arrayLen);
+int * shuffle(int * array){
+    int i,k,temp;
+    for(i = ARRAYLEN;i > 0;i--){
+        k = rand() % i;
+        temp = array[k];
+        array[k] = array[i-1];
+        array[i-1] = temp;
+    }
+}
+
+int main(){
+    time_t t;
+    srand((unsigned)time(&t));
+    
+    int * array = malloc(sizeof(int) * ARRAYLEN);
+    int i;
+    for(i = 0;i < ARRAYLEN;i++){
+        array[i] = i;
+    }
+    shuffle(array);
     return 0;
 }
-int shuffle(int array[], int arrayLen)
-    {
-        for (int i = 0; i < arrayLen; i++)
-        {
-            int k =rand() % (i+1);
-            int tmp = array[i];
-            array[i] = array[k];
-            array[k] = tmp;
-        }
-    }
 ~~~
+#### Inside-Out-Algorithm算法
+正序遍历元素，将第i个元素随机插入到前i个位置中（包括i）
+C语言实例：
+~~~
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+const int ARRAYLEN = 10;
+
+int * shuffle(int * array){
+    int i,k,temp;
+    for(i = 0;i < ARRAYLEN;i++){
+        k = rand() % (i + 1);
+        temp = array[i];
+        array[i] = array[k];
+        array[k] = temp;
+    }
+}
+
+int main(){
+    time_t t;
+    srand((unsigned)time(&t));
+    
+    int * array = malloc(sizeof(int) * ARRAYLEN);
+    int i;
+    for(i = 0;i < ARRAYLEN;i++){
+        array[i] = i;
+    }
+    shuffle(array);
+    return 0;
+}
+~~~
+
+### 冒泡
+
+### 选择
+
+### 插入
+
+### 快速
+
 ## 分治
 
 ### 递归
@@ -66,6 +145,7 @@ int shuffle(int array[], int arrayLen)
 3. 设置小目标
 
 经典实例-汉诺塔
+C语言实例
 
 
 
