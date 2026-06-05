@@ -24,5 +24,6 @@ int main(){
         array[i] = i;
     }
     shuffle(array);
+    free(array);
     return 0;
 }
