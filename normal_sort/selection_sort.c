@@ -40,23 +40,23 @@ int *createArray(int *array)
     return array;
 }
 
+int *cheakArray(int *array){
+    int i;
+    for(i = 0;i < ARRAYLEN;i++){
+        printf("%d ",array[i]);
+    }
+    printf("\n");
+}
+
 int main()
 {
-    int i;
     time_t t;
     srand((unsigned)time(&t));
 
     int *array = malloc(sizeof(int) * ARRAYLEN);
     array = createArray(array);
-    for (i = 0; i < ARRAYLEN; i++)
-    {
-        printf("%d ", array[i]);
-    }
     printf("\n");
     sort(array);
-    for (i = 0; i < ARRAYLEN; i++)
-    {
-        printf("%d ", array[i]);
-    }
+    free(array);
     return 0;
 }
